@@ -236,7 +236,12 @@ document.onkeydown = (e)=>{
         alert(`-----------atajos----------------
 F2: pone este documento en modo edicion
 ctrl s: guarda este documento en disco
-shift mouseWheel: correccion de tiempo en boton clickeado`);
+shift 🖱️wheel: corregir tiempo en boton
+F4: copiar video URI + t a clipboard`);
+    }
+    else if(e.key === 'F4'){
+        e.preventDefault();
+        navigator.clipboard.writeText(taPrimaria.value);
     }
 }
 

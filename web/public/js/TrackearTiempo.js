@@ -11,7 +11,7 @@ let selRatios;
 let tiempoHMS;
 let tmpInstnt = 0;
 function inicializarVars() {
-    console.log("************inicializando vars***************");
+    // console.log("************inicializando vars***************");
     taNroVid = document.querySelector("#taNroVid");
     taTiempo = document.querySelector("#taTiempo");
     barraProgr = document.querySelector("#barraProgreso");
@@ -21,19 +21,6 @@ function inicializarVars() {
     document.querySelectorAll("video").forEach((video, i) => {
         lVideos.push(video);
     });
-    // document.querySelectorAll(".figura").forEach((figbtn, i)=>{
-    //     lFigBtn.push(figbtn as HTMLInputElement);
-    //     figbtn.addEventListener('click',(evnt)=>{
-    //         console.log("JIJIJI");
-    // const nodoFigure = figbtn.parentElement;
-    // console.log(nodoFigure);
-    // nodoObject = figbtn.nextSibling as HTMLObjectElement;
-    // laFigura = nodoFigure as HTMLElement;
-    // let laURL = (nodoObject as HTMLObjectElement).data;
-    // taPrimaria.value = laURL.substring(laURL.lastIndexOf('/')+1);
-    // taSecndria.value = "FiguraEsEditable";
-    //     });
-    // });
     const miquery = window.location.search; //?t=23&v=0
     const urlparams = new URLSearchParams(miquery);
     if (miquery !== "") {
@@ -97,8 +84,8 @@ function playPause(esto) {
     lVideos.forEach(e => e.pause());
     if (bIsPaused) {
         elVideo.play();
-        taPrimaria.value = elVideo.currentSrc.substring(elVideo.currentSrc.lastIndexOf('/') + 1);
     }
+    taPrimaria.value = `${elVideo.currentSrc}#t=${taTiempo.value}`; //.substring(elVideo.currentSrc.lastIndexOf('/')+1);
 }
 function ir_atraz() {
     elVideo.currentTime -= parseInt(selSpeeds.value);
