@@ -1,0 +1,62 @@
+* {margin: 0; padding: 0;}
+body{	color: white;
+	font-size: 90%;
+	background-color: #393939;}
+
+/****************enable IconFonts*****************************/
+@font-face{	font-family: 'NotoSansCJKjp-Regular-Alphabetic';
+			src: url('/apz/0assets/fonts/NotoSansCJKjp-Regular.otf') format('opentype');}
+@font-face{	font-family: 'apazammp';
+	src: url('/apz/0assets/fonts/ApazaMmp-Bold.ttf') format('truetype');}
+
+/***************** GRAL ************************/
+* {font-family: NotoSansCJKjp-Regular-Alphabetic,Arial, Helvetica, sans-serif;}
+
+h1,h2 {	color: yellow;}
+h3,h4 {	color:green;}
+h1,h2,h3,h4 {text-align: center;}
+
+a {	text-decoration: none;
+	color: DeepSkyBlue;}
+
+code { background-color: blue;
+    	color: yellow;
+		font-family: monospace;}
+.apazammp{	color: deepskyblue;
+	font-family: apazammp;
+	text-shadow: 2px 1px black;
+}
+
+/*************Area menuCapitulos + video*********************/
+body>div{	position: relative;}
+video{		height: 700px;}
+
+.menuCapitulos{	background-color: rgba(39, 39, 39, 0.95);
+				position: absolute;
+				top: 2rem;
+				left: 2rem;
+				z-index: 2;}
+
+summary>h2{	display: inline-block;
+			margin-left: 4rem;}
+
+ol,ul {list-style-position: inside;}
+
+/********* iconos SVG ************/
+.icono{	width: 1em;
+    	height: 1em;}
+
+/************* botones *************/
+button{	border: none;
+		padding: 1px;
+		display: inline;
+		border-radius: 5px;
+		box-shadow: 3px 2px;
+		min-width: 1.5em;}
+button.info{color: white;
+			background-color: rgba(142, 143, 223, 0.95);
+			padding: 0px;
+			border-radius: 10px;}
+#redireccion{position: absolute;
+			background-color: black;
+			bottom: -1rem;	left: 0; z-index: 3;}

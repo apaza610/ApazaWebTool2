@@ -1,0 +1,90 @@
+:root { --anchoVideo: 1200px; }
+
+body {background-color: gray;
+    font-family:'PT Sans', Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: small;
+}
+
+* {border: 0; margin: 0;}
+
+#ttlCentral {
+    background-color: black;
+    color: whitesmoke;
+}
+
+.vidcontainer {
+    /* background-color: yellow; */
+    /* float: left; */
+    margin: 2px;
+    position: relative;
+    display: block;
+    width: var(--anchoVideo);
+}
+
+.ctrlBtns {
+    /* background-color: red; */
+    display: block;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    z-index: 1;
+}
+
+.ctrlBtns button {
+    width: calc(var(--anchoVideo)/3.03);
+    height: 400px;
+    opacity: 0.05;
+}
+
+video { 
+    /* min-width: 720px; */
+    width: var(--anchoVideo);
+    /* display: block; */
+    /* position: absolute; */
+    /* max-width: 1280px; */
+    max-height: 650px;
+}
+
+#barraProgreso { width: 700px; }
+
+.pnlCtrls { background-color: darkslategray;
+    display: block;
+}
+
+#padre { background-color: darkslategray;
+    position: fixed;
+    display: inline;
+    top: 20%;
+    right: 0;
+    z-index: 1;
+    text-align: right;
+}
+
+#padre button { height: 3rem;
+    margin: 2px;
+    width: 2rem;
+}
+
+#cajavids{ column-count: 3; }
+
+#btnToggleCtrls { 
+    top: 0;
+    left: 0;
+}
+
+.basura {
+    color: red;
+    text-decoration: none;
+}
+
+a { color: white;
+    text-decoration: none; }
+
+.iconito { width: 1rem; }
+
+#paEditar {width: 25%;}
+
+@media (pointer:none), (pointer:coarse) {
+    #cajavids{ column-count: 2; }
+    video { width: 85%;  }
+}

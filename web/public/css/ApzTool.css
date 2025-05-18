@@ -1,0 +1,45 @@
+/******************Panel Herramientas***************************/
+/* :root { 
+	--panelCoordX: 0.5rem;
+} */
+* {margin: 0; padding: 0;}
+
+#saltos { position: fixed;
+    top: 0;
+    right: 0;
+}
+#saltos button{ background-color: gray;
+    color: white;
+    opacity: 0.6;
+    width: 2rem; }
+.pnlCtrls { background-color: black;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    opacity: 0.7;
+    /* width: 100%; */
+    z-index: 2;
+}
+#apzToolsDiv {
+    position: fixed;
+    bottom: 52%;
+    right: 0;
+    z-index: 3;
+}
+#panelEstiloTool { background-color: black;
+    position: fixed;
+    right: 0;
+    bottom: 2em;
+    text-align: right;
+    z-index: 2;
+}
+#camposEditables button { width: 2em; }
+#panelEstiloTool button { background-color: gray; border: none; width: 2rem;}
+#panelEstiloTool input { width: 2rem; opacity: 0.6;}
+#panelEstiloTool a { color: yellow; text-decoration: none; }
+
+input[type="text"] { text-align: right; }
+
+.iconito { width: 1rem; }
+
+.hvrBtn { border-radius: 40%; }

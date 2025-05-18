@@ -1,0 +1,81 @@
+<table id="panelEstiloTool">
+	<tr>
+		<td>
+			<button onclick="window.scrollTo(0,0)">上</button>
+			<button class="hvrBtn" onmouseover="hacerEditable(this)" style="text-decoration:line-through; color: blue;" id="edt">✒️</button>
+			<button class="hvrBtn" onmouseover="reemplazarTag('hyperlink')">⚓</button>
+			<!-- <button onclick="darEstiloAnki()"><img src="/apz/0assets/icons/apz/otros_srs_anki.svg" class="iconito"></button> -->
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button onclick="reDimensionar(-10)">-</button>
+			<button onclick="flotarIzqDer()">↔</button>
+			<button onclick="reDimensionar(10)">+</button>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<input type="number" id="numFils" min="1" value=1 style="width: 2em;">      
+			<input type="number" id="numCols" min="1" value=2 style="width: 2em;">      
+			<button onclick="crearTag('columnas')" class="numCols">列</button>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button class="hvrBtn" onmouseover="crearTag('imagen')">🖼️</button>
+			<button class="hvrBtn" onmouseover="crearTag('figura')">📜</button>
+			<button class="hvrBtn" onmouseover="crearTag('pelicula')">🎞️</button>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button onclick="reemplazarTag('rawhtml')">⚙️</button>
+			<select name="tagDeseado" id="tagDeseado" onchange="crearTag('tag')">
+				<option value="">&lt;tag&gt;</option>
+				<option value="juego">juego</option>
+				<option value="span">span</option>
+				<option value="hr">hr</option>
+				<option value="br">br</option>
+				<option value="list">list</option>
+				<option value="typedJS">typedJS</option>
+				<option value="animeJS">animeJS</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button onclick='darFormato("span","txtColor1")' class="txtColor1">色</button>
+			<button onclick='darFormato("span","txtColor2")' class="txtColor2">色</button>
+			<button onclick='darFormato("span","txtColor3")' class="txtColor3">色</button>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button onclick='darFormato("span","txtFondo1")'><span class="txtFondo1">Fn</span></button>
+			<button onclick='darFormato("span","txtFondo2")'><span class="txtFondo2">Fn</span></button>
+			<button onclick='darFormato("span","txtFondo3")'><span class="txtFondo3">Fn</span></button>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button onclick='darFormato("h1")'>h1</button>
+			<button onclick='darFormato("h2")'>h2</button>
+			<button onclick='darFormato("span","apazammp")'><span class="apazammp">F</span></button>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button onclick='darFormato("strong")'><strong>B</strong></button>
+			<button onclick='darFormato("em")'><em>it</em></button>
+			<button onclick='darFormato("code")'><code>cd</code></button>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button onclick="fileWrite()">💾</button>
+			<button onclick="databaseWrite()">💽</button>
+			<button onclick="getFolderPath()">道</button>
+		</td>
+	</tr>
+</table>
