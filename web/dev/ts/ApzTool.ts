@@ -59,6 +59,7 @@ function darFormato(elTag: string, laClase: string=""): void{
 let selTagDeseado: HTMLSelectElement;
 function crearTag(tipo: string): void{  //inserta tags sin tener texto seleccionado
     selTagDeseado = document.querySelector('#tagDeseado') as HTMLSelectElement;
+    let elPath: string = "http://";
     switch (tipo) {
         case 'tag':
             switch (selTagDeseado.value) {
@@ -86,13 +87,19 @@ function crearTag(tipo: string): void{  //inserta tags sin tener texto seleccion
             }
             break;
         case 'pelicula':
-            taPrimaria.value = `<span class="vidcontainer"><span><button onclick="ir_atraz()">≪</button><button onclick="playPause(this)">▶</button><button onclick="ir_adelante()">≫</button></span><video onclick="editarVideo(this)" ontimeupdate="cabezalAvanzando(this)"><source src="0media/${taPrimaria.value}" type="video/mp4"></video></span>`;
+            elPath = prompt("path URL?") as string;
+            elPath = getURLrelativo(window.location.href, elPath);
+            taPrimaria.value = `<span class="vidcontainer"><span><button onclick="ir_atraz()">≪</button><button onclick="playPause(this)">▶</button><button onclick="ir_adelante()">≫</button></span><video onclick="editarVideo(this)" ontimeupdate="cabezalAvanzando(this)"><source src="${elPath}" type="video/mp4"></video></span>`;
             break;
         case 'figura':
-            taPrimaria.value = `<figure><button onclick="editarFigura(this)">x</button><object class="hero" data="0media/${taPrimaria.value}" border="1"></object></figure>...`;
+            elPath = prompt("path URL?") as string;
+            elPath = getURLrelativo(window.location.href, elPath);
+            taPrimaria.value = `<figure><button onclick="editarFigura(this)">x</button><object class="hero" data="${elPath}" border="1"></object></figure>...`;
             break;
         case 'imagen':
-            taPrimaria.value = `<img src="0media/${taPrimaria.value}" class="explica1" onclick="editarImg(this)">`;
+            elPath = prompt("path URL?") as string;
+            elPath = getURLrelativo(window.location.href, elPath);
+            taPrimaria.value = `<img src="${elPath}" class="explica1" onclick="editarImg(this)">`;
             break;
         case 'columnas':
             let numFils = parseInt((document.getElementById("numFils") as HTMLInputElement).value);
@@ -143,6 +150,26 @@ function getFolderPath(): void{
     taPrimaria.select();
     document.execCommand('copy');
 }
+
+function getURLrelativo(from: string, to: string): string {
+    const fromUrl = new URL(from, 'https://example.com');
+    const toUrl = new URL(to, 'https://example.com');
+
+    const fromParts = fromUrl.pathname.split('/').filter(Boolean);
+    const toParts = toUrl.pathname.split('/').filter(Boolean);
+
+    // Find common base index
+    let i = 0;
+    while (i < fromParts.length && i < toParts.length && fromParts[i] === toParts[i]) {
+        i++;
+    }
+
+    const up = fromParts.length - i;
+    const down = toParts.slice(i).join('/');
+
+    return `${'../'.repeat(up)}${down}`;
+}
+
 
 let bToolsVisible = false;
 let apzTools: HTMLDivElement;

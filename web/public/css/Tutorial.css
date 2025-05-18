@@ -17,10 +17,7 @@ h2 { font-size: 0.9rem; }
 h1,h2,h3 { 
     color: whitesmoke;
     background-color: #393939;
-    /* text-align: center; */
-    display: inline-block;
-    position: relative;
-    left: 5rem;
+    text-align: center;
 }
 
 .vidcontainer {
