@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/apz/templates/web/public/css/ApzTool.css">
 <link rel="stylesheet" href="/apz/templates/web/public/css/Tutorial.css">
-<link rel="stylesheet" href="/apz/0estilo/animate/animate.min.css">
+<!-- <link rel="stylesheet" href="/apz/0estilo/animate/animate.min.css">
 <script src="/apz/0code/anime/lib/anime.min.js"></script>
-<script src="/apz/0code/typed/lib/typed.min.js"></script>
+<script src="/apz/0code/typed/lib/typed.min.js"></script> -->
 <title>ynpr</title>
 </head>
 <body>

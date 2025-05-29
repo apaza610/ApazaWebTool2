@@ -20,6 +20,7 @@ function inicializarVars() {
     tiempoHMS = document.querySelector('#tiempoHMS');
     document.querySelectorAll("video").forEach((video, i) => {
         lVideos.push(video);
+        video.controls = true;
     });
     const miquery = window.location.search; //?t=23&v=0
     const urlparams = new URLSearchParams(miquery);

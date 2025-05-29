@@ -17,18 +17,20 @@ let bEsEditable = false;
 function hacerEditable(esteBtn) {
     tagArticle.contentEditable = bEsEditable ? "false" : "true";
     tagFooter.contentEditable = bEsEditable ? "false" : "true";
-    esteBtn.style.textDecoration = bEsEditable ? "line-through" : "none";
+    // esteBtn.style.textDecoration = bEsEditable? "line-through" : "none";
     bEsEditable = !bEsEditable;
 }
 function fileWrite() {
-    limpiarTypedJS(); //TypedJS temp modifications
-    limpiarAnimeJS();
+    // limpiarTypedJS();    //TypedJS temp modifications
+    // limpiarAnimeJS();
     let xhttp = new XMLHttpRequest;
     xhttp.open("POST", "/apz/templates/web/public/php/documentoWrite.php", true); //no uses GET si URI es Too Long
     xhttp.send(JSON.stringify({ "keyDato": document.querySelector("article").innerHTML,
-        "keyFoot": document.getElementsByTagName("footer")[0].innerText }));
+        // "keyFoot": document.getElementsByTagName("footer")![0].innerText
+    }));
     //ver si se pudo guardar o no se pudo guardar el dato necesario
-    xhttp.onload = function (dato) { alert("edited PHP was stored"); };
+    console.log(document.querySelector("article").innerHTML);
+    xhttp.onload = function (dato) { alert("edited PHP was recorded!!!"); };
 }
 function darFormato(elTag, laClase = "") {
     let seleccion, rango, cadena;
@@ -79,16 +81,22 @@ function crearTag(tipo) {
             break;
         case 'pelicula':
             elPath = prompt("path URL?");
+            if (elPath.startsWith("D:"))
+                elPath = convertirPathToLocalhostUrl(elPath);
             elPath = getURLrelativo(window.location.href, elPath);
             taPrimaria.value = `<span class="vidcontainer"><span><button onclick="ir_atraz()">≪</button><button onclick="playPause(this)">▶</button><button onclick="ir_adelante()">≫</button></span><video onclick="editarVideo(this)" ontimeupdate="cabezalAvanzando(this)"><source src="${elPath}" type="video/mp4"></video></span>`;
             break;
         case 'figura':
             elPath = prompt("path URL?");
+            if (elPath.startsWith("D:"))
+                elPath = convertirPathToLocalhostUrl(elPath);
             elPath = getURLrelativo(window.location.href, elPath);
             taPrimaria.value = `<figure><button onclick="editarFigura(this)">x</button><object class="hero" data="${elPath}" border="1"></object></figure>...`;
             break;
         case 'imagen':
             elPath = prompt("path URL?");
+            if (elPath.startsWith("D:"))
+                elPath = convertirPathToLocalhostUrl(elPath);
             elPath = getURLrelativo(window.location.href, elPath);
             taPrimaria.value = `<img src="${elPath}" class="explica1" onclick="editarImg(this)">`;
             break;
@@ -154,6 +162,21 @@ function getURLrelativo(from, to) {
     const up = fromParts.length - i;
     const down = toParts.slice(i).join('/');
     return `${'../'.repeat(up)}${down}`;
+}
+/**
+ * Converts a Windows file path to a localhost URL
+ * @param localPath - The Windows file path (e.g., "D:\apz\maps\file.png")
+ * @param baseLocalhost - The base localhost URL (default: "http://localhost")
+ * @returns The converted localhost URL
+ */
+function convertirPathToLocalhostUrl(localPath, baseLocalhost = "http://localhost") {
+    // Normalize the path by replacing backslashes with forward slashes
+    const normalizedPath = localPath.replace(/\\/g, '/');
+    // Remove the drive letter if present (e.g., "D:/")
+    const pathWithoutDrive = normalizedPath.replace(/^[A-Za-z]:\//, '/');
+    // Combine with localhost base URL
+    const url = new URL(pathWithoutDrive, baseLocalhost);
+    return url.toString();
 }
 let bToolsVisible = false;
 let apzTools;
@@ -231,6 +254,7 @@ function limpiarAnimeJS() {
 document.onkeydown = (e) => {
     if (e.key === 'F2') {
         e.preventDefault();
+        mostrarOcultarTools();
         hacerEditable(document.querySelector("#edt"));
     }
     else if (e.ctrlKey && e.key === 's') {
